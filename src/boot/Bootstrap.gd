@@ -21,7 +21,6 @@ enum InstanceType {
 func run(args: Array, root: Node3D) -> InstanceType:
 	var instance_type: InstanceType = _get_instance_type(args)
 	var port: int = _get_port(args)
-
 	match instance_type:
 		InstanceType.CLIENT:
 			var address: String = _get_address(args)
@@ -59,7 +58,7 @@ func _get_address(args: Array) -> String:
 	return address
 
 ## Assert that the ip address is valid.
-func assert_valid_ip_address(address: String):
+func assert_valid_ip_address(address: String) -> void:
 	var octets: Array = address.split(".")
 	assert(len(octets) == 4, self.INVALID_IP_ADDRESS_OCTET_COUNT_MESSAGE)
 	for octet: String in octets:
