@@ -1,11 +1,12 @@
 class_name Game extends Node3D
 
 const Bootstrap = preload("res://src/boot/Bootstrap.gd")
+const InstanceType = Bootstrap.InstanceType
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var args: Array = OS.get_cmdline_args()
-	Bootstrap.new().run(args, self)
+	var instance_type: InstanceType = Bootstrap.new().run(args, self)
 	
 	multiplayer.connected_to_server.connect(_on_client_connect)
 	
