@@ -18,7 +18,7 @@ enum InstanceType {
 }
 
 ## Run the bootstrap.
-func run(args: Array, root: Node3D) -> InstanceType:
+func run(args: Array, root: Node) -> InstanceType:
 	var instance_type: InstanceType = _get_instance_type(args)
 	var port: int = _get_port(args)
 	match instance_type:
