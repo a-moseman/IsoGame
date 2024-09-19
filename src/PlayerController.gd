@@ -15,7 +15,7 @@ func _process(delta):
 	if movement_scale > 0:
 		var motion: Vector3 = Vector3(movement_vector.x, 0, -movement_vector.y) * move_speed
 		move_and_collide(motion * delta)
-	
+
 func _input(event):
 	if event.is_action_pressed("move-up"):
 		movement_input.y += 1
@@ -41,7 +41,8 @@ func _input(event):
 		movement_vector = Vector2.ZERO
 	else:
 		movement_vector = movement_input / movement_scale
-		
+
+## Clamp the x and y values of the provided vector to be between -1 and 1, both inclusive.
 func _clamp(v: Vector2):
 	if v.x > 1:
 		v.x = 1
