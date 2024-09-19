@@ -1,21 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://drsvt6rhgkx4w"]
+[gd_scene load_steps=4 format=3 uid="uid://drsvt6rhgkx4w"]
 
 [ext_resource type="Script" path="res://src/node/Game.gd" id="1_8l5ta"]
-[ext_resource type="Script" path="res://src/PlayerController.gd" id="2_yxnk8"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_527ol"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_15poa"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gnko0"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5sxfm"]
-
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node"]
 script = ExtResource("1_8l5ta")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.258819, -0.554032, 0.79124, 0, 0.819152, 0.573576, -0.965926, -0.148453, 0.212012, 0, 2.5, 0)
+transform = Transform3D(0.258819, -0.554032, 0.79124, 0, 0.819152, 0.573576, -0.965926, -0.148452, 0.212012, 0, 2.5, 0)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -30,14 +25,8 @@ skeleton = NodePath("")
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 8, 4)
 
-[node name="Player" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("2_yxnk8")
-move_speed = 10.0
+[node name="Players" type="Node" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_gnko0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("BoxMesh_5sxfm")
-skeleton = NodePath("")
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("../Players")
