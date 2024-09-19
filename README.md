@@ -4,4 +4,4 @@ An open-ended projected for a multiplayer isometric game. It is currently being 
 
 ## Development
 
-When working on a new feature, bug fix, etc., you should create a new branch off of the develop branch. Branches created off of main, other than develop, will be deleted. Only merges from develop into main will be accepted, so merge into develop first with your feature branch.
+Commits should never be directly made to main or develop. Instead, they should be made to branches created off of develop. Branches made off of main will be deleted. Merges into main will only be allowed from develop. Both main and develop require PRs. PRs for merging into main should only be made if all outstanding PRs to merge into develop have been resolved.
