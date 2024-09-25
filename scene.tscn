@@ -1,32 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://drsvt6rhgkx4w"]
+[gd_scene load_steps=2 format=3 uid="uid://drsvt6rhgkx4w"]
 
 [ext_resource type="Script" path="res://src/node/Game.gd" id="1_8l5ta"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_527ol"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_15poa"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_8l5ta")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.258819, -0.554032, 0.79124, 0, 0.819152, 0.573576, -0.965926, -0.148452, 0.212012, 0, 2.5, 0)
-
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("WorldBoundaryShape3D_527ol")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
-mesh = SubResource("PlaneMesh_15poa")
-skeleton = NodePath("")
-
-[node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 8, 4)
+[node name="PlayerCamera" type="Camera2D" parent="."]
+skew = 0.61548
 
 [node name="Players" type="Node" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player.tscn")
+_spawnable_scenes = PackedStringArray("res://prefab/player.tscn")
 spawn_path = NodePath("../Players")
