@@ -7,7 +7,6 @@ var _value: int
 var _min: int
 ## The inclusive maximum value of the range.
 var _max: int
-
 ## Used to determine if value hits either bound of the range.
 var _previous_value: int
 
@@ -41,15 +40,16 @@ func _clamp_with_signal() -> void:
 		self._value = self._max
 		# emit signal if reaching max
 		if self._previous_value < self._max:
-			changed.emit(self._value - self._previous_value)
 			reached_max.emit(self._value, self._max)
 	# clamp to min
 	if self._value <= self._min:
 		self._value = self._min
 		# emit signal if reaching min
 		if self._previous_value > self._min:
-			changed.emit(self._value - self._previous_value)
 			reached_min.emit(self._value, self._min)
+	# emit signal if value changes
+	if self._value != self._previous_value:
+		changed.emit(self._value - self._previous_value)
 	self._previous_value = self._value
 	
 ## Add to the value.
