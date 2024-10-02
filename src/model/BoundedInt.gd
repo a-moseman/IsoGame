@@ -11,6 +11,8 @@ var _max: int
 ## Used to determine if value hits either bound of the range.
 var _previous_value: int
 
+## A signal that is emmited when the value changes.
+signal changed(difference: int)
 ## A signal that is emitted when the value reaches the maximum bound of the range.
 signal reached_max(value: int, max: int)
 ## A signal that is emitted when the value reaches the minimum bound of the range.
@@ -39,12 +41,14 @@ func _clamp_with_signal() -> void:
 		self._value = self._max
 		# emit signal if reaching max
 		if self._previous_value < self._max:
+			changed.emit(self._value - self._previous_value)
 			reached_max.emit(self._value, self._max)
 	# clamp to min
 	if self._value <= self._min:
 		self._value = self._min
 		# emit signal if reaching min
 		if self._previous_value > self._min:
+			changed.emit(self._value - self._previous_value)
 			reached_min.emit(self._value, self._min)
 	self._previous_value = self._value
 	
