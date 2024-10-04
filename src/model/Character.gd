@@ -1,4 +1,4 @@
-class_name Entity extends Object
+class_name Character extends Object
 
 # imports
 const BoundedInt = preload("res://src/model/BoundedInt.gd")
